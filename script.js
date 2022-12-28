@@ -78,18 +78,72 @@ function drop(event) {
 
         const draggableElement = document.getElementById(draggableElementData);
         event.target.classList.add("dropped");
+
         // event.target.style.backgroundColor = draggableElement.style.color; // This approach works only for inline styles. A more general approach would be the following:
         event.target.style.backgroundColor = window.getComputedStyle(draggableElement).color;
         draggableElement.classList.add("dragged");
+
         draggableElement.setAttribute("draggable", "false");
         event.target.insertAdjacentHTML("afterbegin", `<i class="fas fa-${draggableElementData}"></i>`);
     }
 }
-
+//funkcia napojena na reset
 function testSkupiny(){
     //takto zistim ci sa tam nachadza dana vec
-    droppableElements.forEach(element => console.log(element.getAttribute("data-draggable-id")))
+//    droppableElements.forEach(element => console.log(element.getAttribute("data-draggable-id")))
 
+
+    //for each v kazdom odstranim obrazky a popridam ked tak text? - alebo overim ci tam su 2 veci a vymazem jednu
+
+
+   // document.querySelector('[ data-draggable-id="cat" ]').classList.add("resetNigga");//pridanie classy
+    document.querySelector('[ data-draggable-id="cat" ]').classList.remove("dropped"); // odstranenie classy
+    document.querySelector('[ data-draggable-id="cat" ]').style.backgroundColor="white"; //da farbu spat na bielu
+
+  //najdenie konkretneho elementu podla vlastneho atributu
+  //  var skratka =  document.querySelector('[ data-draggable-id="cat" ]');
+  //  skratka.removeChild(skratka.firstElementChild); //vymazat z listu
+//    skratka.childElementCount
+//    console.log("pocet childov ",skratka.childElementCount );
+   // if(skratka.childElementCount>1){
+        //chcem odstranit prvy objekt v dive
+     //   skratka.removeChild(skratka.firstElementChild);
+   // }
+
+        //takto mozem pre vsetky zmazat
+    droppableElements.forEach(resetOdpovede);
+
+
+    draggableElements.forEach(resetMoznosti);
+
+
+
+}
+
+//resetuje odpovedovy harok
+function resetOdpovede(item){
+
+    //odstrani classu dropped (css)
+    item.classList.remove("dropped");
+
+    //backgorund zmeni na defaultnu bielu
+    item.style.backgroundColor="white";
+
+    //ak je ich tam viacej, vrati pocet na 1
+    if(item.childElementCount>1){
+        // novo pridame veci su ako prve, tak mi staci vymazat to prve
+        item.removeChild(item.firstElementChild);
+    }
+}
+
+
+function resetMoznosti(item){
+    //da naspat na povodnu viditelnost
+    item.style.display ='initial';
+    //custom boolean nastavim na true, aby som ho mohol tahat - dragovat obrazok
+    item.draggable=true;
+    //odstanim css classu
+    item.classList.remove("dragged");
 }
 
 //pozrie zoznam a porovna ci sa tam nachadza

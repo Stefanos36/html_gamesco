@@ -38,6 +38,7 @@ body {
     border-radius: 2px;
 
     border:solid 1px black;
+    min-height: 20px;
 }
 .draggable {
     height: 5rem;
