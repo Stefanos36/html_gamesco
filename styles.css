@@ -71,7 +71,7 @@ body {
 }
 .droppable span {
     font-size: 1.25rem;
-    pointer-events: none; /* The element is never the target of pointer events */
+    pointer-events: none; /* The element is never the target of pointer events - magia? */
 }
 
 /* Drag and Drop Related Styling */
@@ -96,6 +96,7 @@ body {
     user-select: none;
     opacity: 0.1;
     cursor: default;
+    display: none;
 }
 .draggable.dragged:hover {
     opacity: 0.1;

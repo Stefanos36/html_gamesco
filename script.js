@@ -1,4 +1,4 @@
-const draggableElements = document.querySelectorAll(".draggable");
+const draggableElements = document.querySelectorAll(".draggable"); //vsetky elementy
 const droppableElements = document.querySelectorAll(".droppable");
 
 draggableElements.forEach(elem => {
@@ -8,6 +8,7 @@ draggableElements.forEach(elem => {
 });
 
 droppableElements.forEach(elem => {
+    //kazdemu objektu pridame eventlisteneri ktore budu spustat ine funkcie
     elem.addEventListener("dragenter", dragEnter); // Fires when a dragged item enters a valid drop target
     elem.addEventListener("dragover", dragOver); // Fires when a dragged item is being dragged over a valid drop target, repeatedly while the draggable item is within the drop zone
     elem.addEventListener("dragleave", dragLeave); // Fires when a dragged item leaves a valid drop target
@@ -19,40 +20,62 @@ droppableElements.forEach(elem => {
 //Events fired on the drag target
 
 function dragStart(event) {
+
     event.dataTransfer.setData("text", event.target.id); // or "text/plain" but just "text" would also be fine since we are not setting any other type/format for data value
+    console.log("dragStart");
 }
 
 //Events fired on the drop target
 
 function dragEnter(event) {
+
+    //skontroluje ci nebol dropped daco v tom
     if(!event.target.classList.contains("dropped")) {
-        event.target.classList.add("droppable-hover");
+        event.target.classList.add("droppable-hover"); //prida mu do zoznamu objekt "droppadle-hover" , podla neho mozme urcit ci ho drzime
     }
+    console.log("dragEnter");
 }
 
 function dragOver(event) {
+    //skontroluje ci nebolo dropped daco v tom
     if(!event.target.classList.contains("dropped")) {
-        event.preventDefault(); // Prevent default to allow drop
+        event.preventDefault(); // Prevent default to allow drop - zobrazi ze nemozes pustit (gulata ikonka preciarknutia)
     }
+    console.log("dragOver");
 }
 
 function dragLeave(event) {
     if(!event.target.classList.contains("dropped")) {
         event.target.classList.remove("droppable-hover");
     }
+    console.log("dragLeave");
 }
+var rovne = true;
 
 function drop(event) {
     event.preventDefault(); // This is in order to prevent the browser default handling of the data
-    event.target.classList.remove("droppable-hover");
+    event.target.classList.remove("droppable-hover");  //odstrani ten droppable objekt
+
     const draggableElementData = event.dataTransfer.getData("text"); // Get the dragged data. This method will return any data that was set to the same type in the setData() method
     const droppableElementData = event.target.getAttribute("data-draggable-id");
 
    //overuje ci je rovnake
    // const isCorrectMatching = draggableElementData === droppableElementData;
+    console.log("draggableElementData");
+    console.log(draggableElementData);
+    console.log(droppableElements);
+   // const isCorrectMatching = draggableElementData === droppableElementData;
     const isCorrectMatching = true  ;
 
-    if(isCorrectMatching) {
+    rovne=false;
+    //chcem porovnat ci to co dropujem je zo zoznamu (moznosti co som dal) a nie daco random, to za ciarkou je vstupny element - v funkcii sa pouziva ako this
+    droppableElements.forEach(overcitamje,draggableElementData  )
+
+
+//treba overit ci je aspon z toho listu inak mozu nastat buggs, ked prechadza tymto forom -  done
+    if(rovne) {
+    //if(isCorrectMatching) {
+
         const draggableElement = document.getElementById(draggableElementData);
         event.target.classList.add("dropped");
         // event.target.style.backgroundColor = draggableElement.style.color; // This approach works only for inline styles. A more general approach would be the following:
@@ -63,6 +86,22 @@ function drop(event) {
     }
 }
 
+function testSkupiny(){
+    //takto zistim ci sa tam nachadza dana vec
+    droppableElements.forEach(element => console.log(element.getAttribute("data-draggable-id")))
+
+}
+
+//pozrie zoznam a porovna ci sa tam nachadza
+function overcitamje(item){
+    console.log(  item.getAttribute("data-draggable-id"));
+    console.log(this);
+    if(item.getAttribute("data-draggable-id") ==this){
+        console.log("rovna sa ");
+        rovne=true;
+    }
+
+}
 
 // Hra java
 // potrebujeme x pocet booleanov pre x moznosti odpovede (5 ovoci = 5 booleanov)
@@ -70,3 +109,6 @@ function drop(event) {
 // ak budu vsetky booleany true, moze dat dalsiu otazku
 // pocitadlo na spravne/nespravne odpovede?
 
+//koncept: nacitanie otazky (moznosti) z jsonu
+// zaznamenavanie odpovedi do jsonu - funckionalita: budes moct pozriet naspat na predch odpovedane otazky
+// pri resete bude potrebne vymazat "dragged" classu z veci v draggable-elements
