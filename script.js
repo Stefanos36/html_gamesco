@@ -7,6 +7,13 @@ draggableElements.forEach(elem => {
     // elem.addEventListener("dragend", dragEnd); // Fires when a drag operation ends (such as releasing a mouse button or hitting the Esc key) - After the dragend event, the drag and drop operation is complete
 });
 
+var zhoda1 = false ;
+var zhoda2 = false;
+var zhoda3 = false ;
+var zhoda4 = false ;
+var zhoda5 = false ;
+var zhoda =[zhoda1,zhoda2,zhoda3,zhoda4,zhoda5];
+
 droppableElements.forEach(elem => {
     //kazdemu objektu pridame eventlisteneri ktore budu spustat ine funkcie
     elem.addEventListener("dragenter", dragEnter); // Fires when a dragged item enters a valid drop target
@@ -59,22 +66,25 @@ function drop(event) {
     const draggableElementData = event.dataTransfer.getData("text"); // Get the dragged data. This method will return any data that was set to the same type in the setData() method
     const droppableElementData = event.target.getAttribute("data-draggable-id");
 
-   //overuje ci je rovnake
-   // const isCorrectMatching = draggableElementData === droppableElementData;
+     //overuje ci je rovnake
+     // const isCorrectMatching = draggableElementData === droppableElementData;
     console.log("draggableElementData");
     console.log(draggableElementData);
     console.log(droppableElements);
-   // const isCorrectMatching = draggableElementData === droppableElementData;
-    const isCorrectMatching = true  ;
+     // const isCorrectMatching = draggableElementData === droppableElementData;
+    //  const isCorrectMatching = true  ;
 
     rovne=false;
     //chcem porovnat ci to co dropujem je zo zoznamu (moznosti co som dal) a nie daco random, to za ciarkou je vstupny element - v funkcii sa pouziva ako this
     droppableElements.forEach(overcitamje,draggableElementData  )
 
-
-//treba overit ci je aspon z toho listu inak mozu nastat buggs, ked prechadza tymto forom -  done
+    //posielaju sa mu tam rovno data (z textu? a s tym to porovnam)
+    overRovnost(draggableElementData, droppableElementData);
+    //treba overit ci je aspon z toho listu inak mozu nastat buggs, ked prechadza tymto forom -  done
     if(rovne) {
     //if(isCorrectMatching) {
+
+
 
         const draggableElement = document.getElementById(draggableElementData);
         event.target.classList.add("dropped");
@@ -89,6 +99,12 @@ function drop(event) {
 }
 //funkcia napojena na reset
 function testSkupiny(){
+
+    zhoda[0]=false;
+    zhoda[1]=false;
+    zhoda[2]=false;
+    zhoda[3]=false;
+    zhoda[4]=false;
     //takto zistim ci sa tam nachadza dana vec
 //    droppableElements.forEach(element => console.log(element.getAttribute("data-draggable-id")))
 
@@ -123,6 +139,7 @@ function testSkupiny(){
 //resetuje odpovedovy harok
 function resetOdpovede(item){
 
+
     //odstrani classu dropped (css)
     item.classList.remove("dropped");
 
@@ -138,15 +155,19 @@ function resetOdpovede(item){
 
 
 function resetMoznosti(item){
+
     //da naspat na povodnu viditelnost
-    item.style.display ='initial';
+   // item.style.display ='initial';
+    //nemam menit display ale odstranit classu co to zneviditelny
+
     //custom boolean nastavim na true, aby som ho mohol tahat - dragovat obrazok
     item.draggable=true;
     //odstanim css classu
     item.classList.remove("dragged");
 }
 
-//pozrie zoznam a porovna ci sa tam nachadza
+//pozrie zoznam a porovna ci sa tam nachadza, aby tam nemohol vlozit daco mimo povolene moznosti
+//mozem overit ci dal spravne odpoved tuna
 function overcitamje(item){
     console.log(  item.getAttribute("data-draggable-id"));
     console.log(this);
@@ -155,6 +176,57 @@ function overcitamje(item){
         rovne=true;
     }
 
+
+}
+
+
+
+
+
+
+
+
+//musim mu poslat obe, aj drag aj drop
+function overRovnost(drag,drop){
+    //draggableElementData = event.dataTransfer.getData("text"); toto je drag
+
+    console.log("dlzka droppable elementu ",droppableElements.length);
+    console.log(droppableElements);
+
+    if(drag ==drop){
+        //tu len zistim ktory boolean prepnem na true
+        for(var a=0;a<droppableElements.length;a++){
+            console.log(a);
+            console.log(droppableElements[a])
+            console.log(droppableElements[a].getAttribute("data-draggable-id"))
+            //porovnam s droppom //toto je blbost
+            if(droppableElements[a].getAttribute("data-draggable-id")== drag ){
+
+                //pre danu zhodu zmenim na true
+                zhoda[a]=true;
+            }
+        }
+        console.log("pozri zmenu ",zhoda );
+    }
+
+
+  //  console.log(droppableElements[0])
+  //  console.log(droppableElements[0].getAttribute("data-draggable-id"))
+     //   ['data-draggable-id']
+}
+
+//budem zaznamenavat booleany
+function porovnajVyhodnot(){
+    console.log("potvrd");
+    //tu mi bude staci len porovnat ci 5 booleanov je true
+    if(zhoda[0] ==true && zhoda[1] ==true && zhoda[2] == true && zhoda[3] == true && zhoda[4] == true){
+
+        console.log("vsade zhoda");
+
+    }
+    console.log("pozri zmenu ",zhoda );
+   // overRovnost();
+    //porovnavat po jednom a spocitat ci ich je 5?
 }
 
 // Hra java
@@ -165,4 +237,3 @@ function overcitamje(item){
 
 //koncept: nacitanie otazky (moznosti) z jsonu
 // zaznamenavanie odpovedi do jsonu - funckionalita: budes moct pozriet naspat na predch odpovedane otazky
-// pri resete bude potrebne vymazat "dragged" classu z veci v draggable-elements
