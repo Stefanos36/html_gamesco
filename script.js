@@ -47,7 +47,11 @@ function drop(event) {
     event.target.classList.remove("droppable-hover");
     const draggableElementData = event.dataTransfer.getData("text"); // Get the dragged data. This method will return any data that was set to the same type in the setData() method
     const droppableElementData = event.target.getAttribute("data-draggable-id");
-    const isCorrectMatching = draggableElementData === droppableElementData;
+
+   //overuje ci je rovnake
+   // const isCorrectMatching = draggableElementData === droppableElementData;
+    const isCorrectMatching = true  ;
+
     if(isCorrectMatching) {
         const draggableElement = document.getElementById(draggableElementData);
         event.target.classList.add("dropped");
@@ -58,3 +62,11 @@ function drop(event) {
         event.target.insertAdjacentHTML("afterbegin", `<i class="fas fa-${draggableElementData}"></i>`);
     }
 }
+
+
+// Hra java
+// potrebujeme x pocet booleanov pre x moznosti odpovede (5 ovoci = 5 booleanov)
+// reset, nacitanie dalsej otazky resetuje vsetky booleany
+// ak budu vsetky booleany true, moze dat dalsiu otazku
+// pocitadlo na spravne/nespravne odpovede?
+
