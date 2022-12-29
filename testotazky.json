@@ -1,0 +1,100 @@
+{
+
+  "obtiaznost" : [
+
+    {
+      "otazka": [
+
+
+        {
+          "moznosti" : [
+
+            {"class" : "fas fa-hamburger draggable",
+              "color" : "yellow"},
+
+            {
+              "class": "fas fa-cat draggable",
+              "color" : "#ff6384"
+            },
+            {
+              "class": "fas fa-dog draggable",
+              "color" : "#36a2eb"
+
+            },
+            {
+              "class": "fas fa-dove draggable",
+              "color" : "#ffce56"
+            }
+
+
+
+          ],
+          "odpovede": "3"
+
+        },
+        {
+          "moznosti" : [
+
+            {"class" : "fas fa-hamburger draggable",
+              "color" : "blue"},
+
+            {
+              "class": "fas fa-cat draggable",
+              "color" : "#ff6384"
+            },
+            {
+              "class": "fas fa-dog draggable",
+              "color" : "#36a2eb"
+
+            },
+            {
+              "class": "fas fa-dove draggable",
+              "color" : "#ffce56"
+            }
+
+
+
+          ],
+          "odpovede": "3"
+
+        },{
+          "moznosti" : [
+
+            {"class" : "fas fa-hamburger draggable",
+              "color" : "#36a2eb"},
+
+            {
+              "class": "fas fa-cat draggable",
+              "color" : "#ff6384"
+            },
+            {
+              "class": "fas fa-dog draggable",
+              "color" : "#36a2eb"
+
+            },
+            {
+              "class": "fas fa-dove draggable",
+              "color" : "#ffce56"
+            }
+
+
+
+          ],
+          "odpovede": "3"
+
+        }
+      ]
+
+
+    },{
+
+
+
+
+    }
+
+
+  ]
+
+
+}

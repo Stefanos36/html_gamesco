@@ -229,6 +229,16 @@ function porovnajVyhodnot(){
     //porovnavat po jednom a spocitat ci ich je 5?
 }
 
+
+
+//naucit sa pridat otazku
+function pridajOtazku(){
+    const otazka = document.createElement('i'); //toto je div, header...
+
+
+
+}
+
 // Hra java
 // potrebujeme x pocet booleanov pre x moznosti odpovede (5 ovoci = 5 booleanov)
 // reset, nacitanie dalsej otazky resetuje vsetky booleany
