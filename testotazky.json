@@ -9,78 +9,125 @@
         {
           "moznosti" : [
 
-            {"class" : "fas fa-hamburger draggable",
-              "color" : "yellow"},
-
+            {"class" : "fa-solid fa-frog draggable",
+              "color" : "#78b72b"},
             {
-              "class": "fas fa-cat draggable",
-              "color" : "#ff6384"
+              "class": "fa-solid fa-fish draggable",
+              "color" : "#01bae3"
             },
+
             {
               "class": "fas fa-dog draggable",
-              "color" : "#36a2eb"
+              "color" : "#cc5226"
 
             },
             {
-              "class": "fas fa-dove draggable",
-              "color" : "#ffce56"
+              "class": "fas fa-cat draggable",
+              "color" : "#ffffff"
             }
-
-
-
           ],
-          "odpovede": "3"
+          "odpovede": "2",
+          "otazka" : "Zvol zvieratá žijúcich vo vode."
 
         },
         {
           "moznosti" : [
 
-            {"class" : "fas fa-hamburger draggable",
-              "color" : "blue"},
+            {"class" : "fa-solid fa-apple-whole draggable",
+              "color" : " #c72222"},
 
             {
-              "class": "fas fa-cat draggable",
-              "color" : "#ff6384"
+              "class": "fa-solid fa-carrot draggable",
+              "color" : "#c4751d"
             },
             {
-              "class": "fas fa-dog draggable",
-              "color" : "#36a2eb"
+              "class": "fa-solid fa-lemon draggable",
+              "color" : "#e3ce01"
 
             },
             {
-              "class": "fas fa-dove draggable",
-              "color" : "#ffce56"
+              "class": "fa-solid fa-fish draggable",
+              "color" : "#01bae3"
             }
 
 
 
           ],
-          "odpovede": "3"
+          "odpovede": "2",
+          "otazka" : "Zvol ovocie."
 
         },{
           "moznosti" : [
 
+            {"class" : "fa-solid fa-phone draggable",
+              "color" : "#363636"},
+
+
+            {
+              "class": "fa-solid fa-lightbulb draggable",
+              "color" : "#fddf00"
+            }, {
+              "class": "fa-solid fa-blender-phone draggable",
+              "color" : "#085c81"
+            },
+            {
+              "class": "fa-solid fa-microscope draggable",
+              "color" : "#131313"
+
+            }
+
+
+          ],
+          "odpovede": "2",
+          "otazka" : "Zvol telefon"
+
+        },{
+          "moznosti" : [
+
+            {
+              "class": "fa-solid fa-pizza-slice draggable",
+              "color" : "#e8964c"
+            },
+            {
+              "class": "fa-solid fa-fish draggable",
+              "color" : "#01bae3"
+            },
+            {"class" : "fa-solid fa-apple-whole draggable",
+              "color" : " #c72222"
+            },
             {"class" : "fas fa-hamburger draggable",
-              "color" : "#36a2eb"},
+              "color" : "#c4751d"
+            }
+
+          ],
+          "odpovede": "2",
+          "otazka" : "Zvol nezdravé jedlo"
+
+        },{
+          "moznosti" : [
+
+            {"class" : "fa-solid fa-bell draggable",
+              "color" : "#eacd1b"},
 
             {
-              "class": "fas fa-cat draggable",
-              "color" : "#ff6384"
+              "class": "fa-solid fa-pen-nib draggable",
+              "color" : " midnightblue"
             },
             {
-              "class": "fas fa-dog draggable",
-              "color" : "#36a2eb"
+              "class": "fa-solid fa-umbrella draggable",
+              "color" : "#01bae3"
+            },
+            {
+              "class": "fa-solid fa-pen draggable",
+              "color" : "#da2b2b"
 
-            },
-            {
-              "class": "fas fa-dove draggable",
-              "color" : "#ffce56"
             }
 
 
 
           ],
-          "odpovede": "3"
+          "odpovede": "2",
+          "otazka" : "Zvol písacie potreby"
 
         }
       ]

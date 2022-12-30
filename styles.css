@@ -51,6 +51,7 @@ body {
     cursor: move;
     transition: opacity 0.2s;
 
+
 }
 .draggable:hover {
     opacity: 0.5;
